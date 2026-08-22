@@ -1,12 +1,16 @@
 // ==========================================
 // 1. CONFIGURACIÓN DE SUPABASE Y USUARIO
 // ==========================================
-const SUPABASE_URL = 'TU_SUPABASE_URL'; // Reemplaza con tus datos reales
-const SUPABASE_ANON_KEY = 'TU_SUPABASE_ANON_KEY';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_URL = 'https://wgqqbahoalozgfukioza.supabase.co'; // Reemplaza con tus datos reales
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndncXFiYWhvYWxvemdmdWtpb3phIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyNTA3OTYsImV4cCI6MjA5OTgyNjc5Nn0.v_kpYceS8ceIUBNaLLHjfyBeFA2Y3lDRy7Yn6cb5Uz8';
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+const STORAGE_KEY = 'derby_bet_state';
 
 let currentUser = null;
 let saldo = 0;
+let displayUsername = "Jugador" + Math.floor(Math.random() * 9999);
+let derbyChannel = null;
 
 const horsesConfig = [
     { id: 0, name: "Relámpago", color: "#ff4d4d" },
