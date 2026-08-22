@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Casino Hipódromo - Offline con Cuentas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="app">
+
+    <!-- Menú Superior y Logo -->
+    <a href="https://frankkoo10.github.io/casinou/" class="top-logo">
+        <img src="logo.png" alt="V Logo" />
+    </a>
+
+    <!-- Botón de Información -->
+    <button class="info-btn" onclick="toggleInfo()">
+        <img src="info.png" alt="Info" />
+    </button>
+
+    <!-- Modal de Información -->
+    <div id="info-modal" class="info-modal">
+        <div class="info-content">
+            <h3>¿Cómo Jugar?</h3>
+            <p>1. Inicia sesión en tu cuenta para sincronizar tu saldo.</p>
+            <p>2. Selecciona la ficha y haz clic en tu caballo favorito.</p>
+            <p>3. Dale a "¡Empezar Carrera!" cuando estés listo.</p>
+            <button onclick="toggleInfo()">Entendido</button>
+        </div>
+    </div>
+
+    <div id="history-bar" class="history-bar"></div>
+
+    <div class="balance-container">
+        Créditos: $<span id="balance-amount">CARGANDO...</span>
+    </div>
+
+    <h1>Royal Derby</h1>
+    <div id="status-msg" class="message">Verificando sesión...</div>
+
+    <div class="game-container">
+        <!-- Pista de Carreras Vertical -->
+        <div class="track-panel" id="track">
+            <div class="finish-line"></div>
+            <!-- Los carriles se generan dinámicamente con JS -->
+        </div>
+
+        <!-- Panel de Apuestas -->
+        <div class="betting-panel">
+            <div class="table-responsive">
+                <table id="odds-table">
+                    <thead>
+                        <tr>
+                            <th>Caballo</th>
+                            <th>Prob.</th>
+                            <th>Pago</th>
+                            <th>Tu Apuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="odds-body">
+                        <!-- Se genera dinámicamente con JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="betting-section">
+                <div class="chips-selector" id="chips-container">
+                    <div class="chip chip-100 active" id="chip-100" onclick="selectChip(100)">
+                        <div class="chip-inner">100</div>
+                    </div>
+                    <div class="chip chip-250" id="chip-250" onclick="selectChip(250)">
+                        <div class="chip-inner">250</div>
+                    </div>
+                    <div class="chip chip-500" id="chip-500" onclick="selectChip(500)">
+                        <div class="chip-inner">500</div>
+                    </div>
+                    <div class="chip chip-1000" id="chip-1000" onclick="selectChip(1000)">
+                        <div class="chip-inner">1K</div>
+                    </div>
+                    <div class="chip chip-5000" id="chip-5000" onclick="selectChip(5000)">
+                        <div class="chip-inner">5K</div>
+                    </div>
+                </div>
+
+                <div class="bet-actions">
+                    <button id="btn-clear" onclick="limpiarApuestas()">Limpiar</button>
+                    <button id="btn-apostar" onclick="registrarApuesta()">Confirmar Apuestas</button>
+                </div>
+                <button id="btn-start" class="btn-start" onclick="iniciarCarreraManual()">🏁 ¡Empezar Carrera!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
